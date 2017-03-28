@@ -1,0 +1,14 @@
+/*font*/
+@font-face {
+    font-family: "OpenSans";
+    url("../font/open-sans.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
+*{
+    font-family: OpenSans, sans-serif;
+
+}
+
+/*header*/
