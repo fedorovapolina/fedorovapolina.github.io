@@ -102,12 +102,14 @@ console.log(a);*/
 
 contentCountry.on('change', function () {
     var selectedCountry = contentCountry.val();
+    contentCity.html("<option class=\"content__option\" value=\"\" disabled selected>Город</option>");
+
     for (var j in cities) {
-        console.log(j);
         if(cities[j].country==selectedCountry) {
             contentCity.append('<option class=\"content__option\" value=\"' + j + '\">' + cities[j].name + '</option>');
         }
     }
+
 });
 
 
