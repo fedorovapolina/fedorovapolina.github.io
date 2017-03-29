@@ -96,6 +96,40 @@ body,html{
     margin-bottom: 150px;
 }
 
+
+
+
+.content__social{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.content__socialtext{
+    outline: none;
+    border-radius: 2px;
+    padding-left: 10px;
+    margin-left: 20px;
+    width: 150px;
+}
+.content__socialcheck{
+    margin-right: 5px;
+}
+
+.content__imgcontainer{
+    margin-bottom: 16px;
+
+}
+.content__images{
+    width: 150px;
+    height: 150px;
+    border-radius: 2px;
+    margin-right: 16px;
+}
+.content__images:hover{
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
 /*switch*/
 .switch__button{
     color: #ff9800;

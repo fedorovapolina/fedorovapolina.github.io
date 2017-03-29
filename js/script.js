@@ -71,41 +71,116 @@ if (window.innerHeight < 440) {
     $('.wrapper').css('height', 'auto');
 }
 
-/*STEP1*/
+
+
+
+/*------STEP1--------*/
+
+
+
 var switchCounter = 1;
+var headerText=$("p.header__text");
 /*content1.show();*/
 
-if (switchCounter == 1) {
-    $('.switch__prev').on('click', function () {
-        return false;
-    });
 
-    $(".switch__next").on("click", function () {
-        switchCounter++;
-        $("p.header__text").text("2. Выберите страну и город");
-        content1.hide();
-        content2.show();
-        content3.hide();
-        content4.hide();
-        return false;
-    });
-}
+$('.switch__prev').on('click', function () {
+    /*if (switchCounter == 1) {
+     return false;
+     }*/
+    switch (switchCounter) {
+        case 1:
+            return false;
+            break;
+        case 2:
+            switchCounter--;
+            console.log(switchCounter);
+            headerText.text("1. Введите имя и e-mail");
+            content1.show();
+            content2.hide();
+            content3.hide();
+            content4.hide();
+            return false;
+            break;
+        case 3:
+            switchCounter--;
+            console.log(switchCounter);
+            headerText.text("2. Выберите страну и город");
+            content1.hide();
+            content2.show();
+            content3.hide();
+            content4.hide();
+            return false;
+            break;
+        case 4:
+            switchCounter--;
+            console.log(switchCounter);
+            headerText.text("3. Отметьте социальные сети");
+            content1.hide();
+            content2.hide();
+            content3.show();
+            content4.hide();
+            return false;
+    }
+});
 
-/*STEP2*/
-var contentCountry=$('.content__country');
-var contentCity=$('.content__city');
+$(".switch__next").on("click", function () {
+    switch (switchCounter) {
+        case 1:
+            switchCounter++;
+            console.log(switchCounter);
+            user.name=$('.content__name').val();
+            user.email=$('.content__email').val();
+            headerText.text("2. Выберите страну и город");
+            content1.hide();
+            content2.show();
+            content3.hide();
+            content4.hide();
+            return false;
+            break;
+        case 2:
+            switchCounter++;
+            user.country=countries[contentCountry.val()];
+            user.city=cities[$('.content__city').val()].name;
+            headerText.text("3. Отметьте социальные сети");
+            content1.hide();
+            content2.hide();
+            content3.show();
+            content4.hide();
+            return false;
+            break;
+        case 3: switchCounter++;
+            /*user.social=;*/
+            headerText.text("4. Выберите любимого котика");
+            content1.hide();
+            content2.hide();
+            content3.hide();
+            content4.show();
+            return false;
+            break;
+        case 4:
+            /*user.image=;*/
+            return false;
+    }
+});
+
+
+/*-----STEP2-------*/
+
+var contentCountry = $('.content__country');
+var contentCity = $('.content__city');
+
 for (var i in countries) {
     contentCountry.append('<option class=\"content__option\" value=\"' + i + '\">' + countries[i] + '</option>');
 }
 /*var a=$('.content__country option:selected').val();
-console.log(a);*/
+ console.log(a);*/
 
 contentCountry.on('change', function () {
     var selectedCountry = contentCountry.val();
     contentCity.html("<option class=\"content__option\" value=\"\" disabled selected>Город</option>");
 
     for (var j in cities) {
-        if(cities[j].country==selectedCountry) {
+        if (cities[j].country == selectedCountry) {
             contentCity.append('<option class=\"content__option\" value=\"' + j + '\">' + cities[j].name + '</option>');
         }
     }
@@ -113,8 +188,16 @@ contentCountry.on('change', function () {
 });
 
 
-/*STEP3*/
+
+
+/*------STEP3-----*/
 
 
 
-/*STEP4*/
+/*------STEP4------*/
+
+
+
+/*-------FINAL------*/
+
+/*innerwrap.html(user.name + '  ' + user.email);*/
