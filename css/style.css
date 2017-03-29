@@ -8,7 +8,103 @@
 
 *{
     font-family: OpenSans, sans-serif;
-
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 15pt;
 }
 
+/**/
+
+body,html{
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #f5f5f5;
+}
+.innerwrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*for all*/
+
+.inactive_button{
+    cursor: default;
+    color: #bbbbbb;
+}
+
+/*STEP1*/
+
 /*header*/
+.header{
+    margin-bottom: 40px;
+
+}
+.header__text{
+    margin-top: 16px;
+
+}
+.header__button{
+    width: 40px;
+    height: 40px;
+    /*color: #bbbbbb;*/
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+
+/*content*/
+.content__input{
+    height: 46px;
+    line-height: 46px;
+    outline: none;
+    border-radius: 2px;
+    padding-left: 10px;
+    width: 100%;
+}
+.content__name{
+    margin-bottom: 16px;
+}
+.content__email{
+    margin-bottom: 150px;
+}
+
+
+.content__select{
+    height: 46px;
+    line-height: 46px;
+    outline: none;
+    border-radius: 2px;
+    padding-left: 10px;
+    width: 100%;
+}
+.content__option:first-child{
+    color: #bbbbbb;
+}
+.content__country{
+    margin-bottom: 16px;
+}
+.content__city{
+    margin-bottom: 150px;
+}
+
+/*switch*/
+.switch__button{
+    color: #ff9800;
+    background-color: #fff;
+    height: 40px;
+    padding: 0 20px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.switch__next{
+    margin-left: 16px;
+}

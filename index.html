@@ -4,26 +4,37 @@
     <meta charset="UTF-8">
     <title>Анкета</title>
 
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 <body>
 <div class="wrapper">
     <div class="innerwrap">
         <div class="sections header">
-            <button class="header__button header__button1">1</button>
-            <button class="header__button header__button2">2</button>
-            <button class="header__button header__button3">3</button>
-            <button class="header__button header__button4">4</button>
+            <button class="header__button inactive_button header__button1">1</button>
+            <button class="header__button inactive_button header__button2">2</button>
+            <button class="header__button inactive_button header__button3">3</button>
+            <button class="header__button inactive_button header__button4">4</button>
             <p class="header__text">1. Введите имя и e-mail</p>
         </div>
-        <form action="">
-            <div class="sections content">
-                <input type="text" class="content__input content__name">
-                <input type="text" class="content__input content__email">
+        <form class="difference" action="">
+            <div class="sections content1">
+                <input type="text" class="content__input content__name" placeholder="Имя"> <br>
+                <input type="text" class="content__input content__email" placeholder="E-mail">
             </div>
+            <div class="sections content2">
+                <select class="content__select content__country">
+                    <option class="content__option" value="" disabled selected>Страна</option>
+                </select>
+                <select class="content__select content__city">
+                    <option class="content__option" value="" disabled selected>Город</option>
+                </select>
+            </div>
+            <!--<div class="sections content3"></div>
+            <div class="sections content4"></div>-->
             <div class="sections switch">
-                <button class="switch__buttons switch__prev">Предыдущий</button>
-                <button class="switch__buttons switch__next">Следующий</button>
+                <button class=" inactive_button switch__button switch__prev">Предыдущий</button>
+                <button class="switch__button switch__next">Следующий</button>
             </div>
         </form>
     </div>

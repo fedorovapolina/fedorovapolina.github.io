@@ -1,5 +1,5 @@
 /*Incoming data*/
-var cities={
+var cities = {
     "1": {"country": 1, "name": "Ukraine"},
     "2": {"country": 3, "name": "Paris"},
     "3": {"country": 4, "name": "Madrid"},
@@ -21,7 +21,7 @@ var cities={
     "333": {"country": 1, "name": "Чернигов"}
 };
 
-var countries={
+var countries = {
     "1": "Ukraine",
     "2": "Germany",
     "3": "France",
@@ -36,12 +36,83 @@ var countries={
 
 /*Initiation*/
 
-var user={
-    "name":"",
-    "email":"",
-    "country":"",
-    "city":"",
-    "social":[],
-    "image":""
+var user = {
+    "name": "",
+    "email": "",
+    "country": "",
+    "city": "",
+    "social": [],
+    "image": ""
 };
 
+/*general*/
+var innerwrap = $(".innerwrap");
+var content1 = $(".content1");
+var content2 = $(".content2");
+var content3 = $(".content3");
+var content4 = $(".content4");
+
+var template = function () {
+    /*content1.hide();*/
+    content2.hide();
+    content3.hide();
+    content4.hide();
+    /*console.log(window.innerHeight);*/
+    /*
+     innerwrap.prepend("<div class=\"sections header\"><button class=\"header__button header__button1\">1</button>    <button class=\"header__button header__button2\">2</button>    <button class=\"header__button header__button3\">3</button>    <button class=\"header__button header__button4\">4</button>    <p class=\"header__text\">1. Введите имя и e-mail</p></div>");
+     innerwrap.append("<form action=\"\"><div class=\"sections content\">    <input type=\"text\" class=\"content__input content__name\" placeholder=\"Имя\"> <br>    <input type=\"text\" class=\"content__input content__email\" placeholder=\"E-mail\">    </div>    <div class=\"sections switch\">    <button class=\"switch__button switch__prev\">Предыдущий</button>    <button class=\"switch__button switch__next\">Следующий</button>    </div>    </form>");
+     */
+};
+
+window.onload = template;
+
+if (window.innerHeight < 440) {
+    innerwrap.css("display", "block");
+    $('.wrapper').css('height', 'auto');
+}
+
+/*STEP1*/
+var switchCounter = 1;
+/*content1.show();*/
+
+if (switchCounter == 1) {
+    $('.switch__prev').on('click', function () {
+        return false;
+    });
+
+    $(".switch__next").on("click", function () {
+        switchCounter++;
+        $("p.header__text").text("2. Выберите страну и город");
+        content1.hide();
+        content2.show();
+        content3.hide();
+        content4.hide();
+        return false;
+    });
+}
+
+/*STEP2*/
+var contentCountry=$('.content__country');
+var contentCity=$('.content__city');
+for (var i in countries) {
+    contentCountry.append('<option class=\"content__option\" value=\"' + i + '\">' + countries[i] + '</option>');
+}
+/*var a=$('.content__country option:selected').val();
+console.log(a);*/
+
+contentCountry.on('change', function () {
+    var selectedCountry = contentCountry.val();
+    for (var j in cities) {
+        console.log(j);
+        if(cities[j].country==selectedCountry) {
+            contentCity.append('<option class=\"content__option\" value=\"' + j + '\">' + cities[j].name + '</option>');
+        }
+    }
+});
+
+
+/*STEP3*/
+
+
+
+/*STEP4*/
