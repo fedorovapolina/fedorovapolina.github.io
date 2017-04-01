@@ -9,64 +9,82 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="innerwrap">
-        <div class="sections header">
-            <button class="header__button inactive_button header__button1">1</button>
-            <button class="header__button inactive_button header__button2">2</button>
-            <button class="header__button inactive_button header__button3">3</button>
-            <button class="header__button inactive_button header__button4">4</button>
-            <p class="header__text">1. Введите имя и e-mail</p>
-        </div>
-        <form class="difference" action="">
-            <div class="sections content1">
-                <input type="text" class="content__input content__name" placeholder="Имя"> <br>
-                <input type="text" class="content__input content__email" placeholder="E-mail">
-            </div>
-            <div class="sections content2">
-                <select class="content__select content__country">
-                    <option class="content__option" value="" disabled selected>Страна</option>
-                </select>
-                <select class="content__select content__city">
-                    <option class="content__option" value="" disabled selected>Город</option>
-                </select>
-            </div>
-            <div class="sections content3">
-                <p class="content__social">
-                    <label class="content__socialname">
-                        <input class="content__socialcheck" type="checkbox">Facebook</label>
-                    <input class="content__socialtext" type="text">
-                </p>
-                <p class="content__social">
-                    <label class="content__socialname">
-                        <input class="content__socialcheck" type="checkbox">Вконтакте</label>
-                    <input class="content__socialtext" type="text">
-                </p>
-                <p class="content__social">
-                    <label class="content__socialname">
-                        <input class="content__socialcheck" type="checkbox">Twitter</label>
-                    <input class="content__socialtext" type="text">
-                </p>
-                <p class="content__social">
-                    <label class="content__socialname">
-                        <input class="content__socialcheck" type="checkbox">Одноклассники</label>
-                    <input class="content__socialtext" type="text">
-                </p>
-            </div>
-            <div class="sections content4">
-                <div class="content__imgcontainer">
-                    <img class="content__images" src="images/cat1.jpg" alt="cat1">
-                    <img class="content__images" src="images/cat2.jpg" alt="cat2">
-                    <img class="content__images" src="images/cat3.jpg" alt="cat3">
-                    <img class="content__images" src="images/dog4.jpg" alt="dog4">
+     <div class="innerwrap">
+         <div class="sections header">
+             <button class="header__button inactive_button header__button1">1</button>
+             <button class="header__button inactive_button header__button2">2</button>
+             <button class="header__button inactive_button header__button3">3</button>
+             <button class="header__button inactive_button header__button4">4</button>
+             <p class="header__text">1. Введите имя и e-mail</p>
+         </div>
+         <form class="difference" id="diff" action="">
+             <div class="sections content1">
+                 <input type="text" class="content__input content__name" placeholder="Имя"> <br>
+                 <input type="text" class="content__input content__email" placeholder="E-mail">
+             </div>
+             <div class="sections content2">
+                 <select class="content__select content__country">
+                     <option class="content__option" value="" disabled selected>Страна</option>
+                 </select>
+                 <select class="content__select content__city">
+                     <option class="content__option" value="" disabled selected>Город</option>
+                 </select>
+             </div>
+             <div class="sections content3">
+                 <p class="content__social">
+                     <label class="content__socialname">
+                         <input class="content__socialcheck" type="checkbox">Facebook</label>
+                     <input class="content__socialtext" type="text" placeholder="Ваша страница в Facebook">
+                 </p>
+                 <p class="content__social">
+                     <label class="content__socialname">
+                         <input class="content__socialcheck" type="checkbox">Вконтакте</label>
+                     <input class="content__socialtext" type="text" placeholder="Ваша страница в Вконтакте">
+                 </p>
+                 <p class="content__social">
+                     <label class="content__socialname">
+                         <input class="content__socialcheck" type="checkbox">Twitter</label>
+                     <input class="content__socialtext" type="text" placeholder="Ваша страница в Twitter">
+                 </p>
+                 <p class="content__social">
+                     <label class="content__socialname">
+                         <input class="content__socialcheck" type="checkbox">Одноклассники</label>
+                     <input class="content__socialtext" type="text" placeholder="Ваша страница в Одноклассники">
+                 </p>
+             </div>
+             <div class="sections content4">
+                 <div class="content__imgcontainer">
+                     <img class="content__images" src="images/cat1.jpg" alt="cat1">
+                     <img class="content__images" src="images/cat2.jpg" alt="cat2">
+                     <img class="content__images" src="images/cat3.jpg" alt="cat3">
+                     <img class="content__images" src="images/dog4.jpg" alt="dog4">
+                 </div>
+                 <p class="content__dog">Вы выбрали собачку. А надо котика.</p>
+             </div>
+             <div class="sections switch">
+                 <button class=" inactive_button switch__button switch__prev">Предыдущий</button>
+                 <button class="switch__button switch__next">Следующий</button>
+             </div>
+         </form>
+     </div>
+
+    <div class="final">
+        <div class="final__result">
+            <div class="final__text">
+                <div class="final__head">
+                    <p class="final__name">Test Test</p>
+                    <p class="final__email">test@test.tt</p>
                 </div>
-                <p class="content__dog">Вы выбрали собачку. А надо котика.</p>
+                <div class="final__location">TestLocation</div>
+                <div class="final__social">TestSocial</div>
             </div>
-            <div class="sections switch">
-                <button class=" inactive_button switch__button switch__prev">Предыдущий</button>
-                <button class="switch__button switch__next">Следующий</button>
-            </div>
-        </form>
+
+            <img class="final__image" src="images/cat2.jpg" alt="">
+
+        </div>
+        <button class="final__reset" type="reset" form="diff">Пройти заново</button>
     </div>
+
 </div>
 
 
