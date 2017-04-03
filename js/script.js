@@ -45,6 +45,10 @@ var user = {
     "image": ""
 };
 
+function Social(title, page) {
+    this.title=title;
+    this.page=page;
+}
 /*general*/
 var innerwrap = $(".innerwrap");
 var content1 = $(".content1");
@@ -177,10 +181,20 @@ switchNext.on("click", function () {
                 user.city = cities[$('.content__city').val()].name;
             } catch (e) {
             }
-            /*user.social=;*/
+
+            var par=$('.content__socialcheck:checked').parent();
+
+            for (i=0; i<par.length; i++){
+                user.social[i]= new Social($(par[i]).text(),$(par[i]).siblings('input').val());
+                $('.final__social').append('<p class="final__social-item"><span class="final__social-title">'+user.social[i].title
+                    +': </span>' + user.social[i].page +'</p>');
+            }
+
             $('.final__name').text(user.name);
             $('.final__email').text(user.email);
             $('.final__location').text(user.country + ', ' + user.city);
+
+
 
 
             final.show();
@@ -271,6 +285,7 @@ var socialCheck = $('.content__socialcheck');
 socialCheck.on('change', function (e) {
     console.log();
     $(e.target).parent().siblings().toggle();
+    console.log($(e.target).parent().text());
 });
 
 
@@ -302,7 +317,9 @@ var finalReset=$('.final__reset');
 finalReset.on('click', function () {
     switchCounter=1;
     template();
-    $('.innerwrap').css('display', 'block');
+    $('.innerwrap').css('display', 'flex');
+    $('.content__socialtext').hide();
+    $('.content__images').css('border','none');
     switchNext.css('color', '#ff9800').css('background-color', 'white').text('Следующий');
     headerText.text('1. Введите имя и e-mail');
 });
