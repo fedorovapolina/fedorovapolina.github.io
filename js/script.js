@@ -195,6 +195,7 @@ switchNext.on("click", function () {
             $('.final__location').text(user.country + ', ' + user.city);
 
 
+            $('.final__image').attr('src',src);
 
 
             final.show();
@@ -294,7 +295,7 @@ socialCheck.on('change', function (e) {
 var dog = $('.content__image-dog');
 var contentDog = $('.content__dog');
 
-
+var src='';
 var contentImages = $('.content__images');
 contentImages.on('click', function (e) {
     var selectedImage = $(e.target);
@@ -306,7 +307,8 @@ contentImages.on('click', function (e) {
     } else {
         contentDog.text('');
         /*user.image*/
-        console.log(selectedImage);
+        src=selectedImage.attr('src');
+
     }
     /**/
 });
