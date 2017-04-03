@@ -124,9 +124,6 @@ var case4 = function () {
 
 
 switchPrev.on('click', function () {
-    /*if (switchCounter == 1) {
-     return false;
-     }*/
     switch (switchCounter) {
         case 1:
             return false;
@@ -279,8 +276,25 @@ socialCheck.on('change', function (e) {
 
 /*------STEP4------*/
 
-var contentImages = $('.content__images');
+var dog = $('.content__image-dog');
+var contentDog = $('.content__dog');
 
+
+var contentImages = $('.content__images');
+contentImages.on('click', function (e) {
+    var selectedImage = $(e.target);
+    contentImages.css('border', 'none');
+    selectedImage.css('border','3px solid #ff9800');
+
+    if (selectedImage.filter('.content__image-dog').length == 1){
+        contentDog.text('Вы выбрали собачку. А надо котика.');
+    } else {
+        contentDog.text('');
+        /*user.image*/
+        console.log(selectedImage);
+    }
+    /**/
+});
 
 /*-------FINAL------*/
 
