@@ -67,7 +67,8 @@ var template = function () {
     content3.hide();
     content4.hide();
     final.hide();
-    $('.loading').addClass('hide');
+    $('.wrapper').css('opacity','1');
+    /*$('.loading').hide();*/
     /*console.log(window.innerHeight);*/
 
 };
