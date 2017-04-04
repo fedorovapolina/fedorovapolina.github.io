@@ -67,7 +67,7 @@ var template = function () {
     content3.hide();
     content4.hide();
     final.hide();
-    $('.wrapper').css('opacity','1');
+    $('.wrapper').css('opacity', '1');
     /*$('.loading').hide();*/
     /*console.log(window.innerHeight);*/
 
@@ -75,9 +75,9 @@ var template = function () {
 
 window.onload = template;
 
-if (window.innerHeight < 440) {
+if (window.innerHeight < 440 || window.innerWidth < 280) {
     innerwrap.css("display", "block");
-    $('.wrapper').css('height', 'auto');
+    $('.wrapper').css('height', 'auto').css('width', 'auto');
 }
 
 /*windows changing*/
@@ -170,7 +170,7 @@ switchNext.on("click", function () {
                         $('.content__name').css('box-shadow', '0 0 5px red');
                         return false;
                         /* break;*/
-                    } else{
+                    } else {
                         $('.content__name').css('box-shadow', 'none');
                     }
                     if (emailTemp.test(contentEmail.val()) == false) {
@@ -184,13 +184,35 @@ switchNext.on("click", function () {
 
             } catch (a) {
                 console.log(a);
-            } break;
+            }
+            break;
         case 2:
-            switchCounter++;
-            case3();
-            button2.css('color', '#ff9800');
-            /*console.log($('.content__select'));*/
-            return false;
+
+            if (selCoun && selCity) {
+                switchCounter++;
+                case3();
+                button2.css('color', '#ff9800');
+                contentCountry.css('box-shadow', 'none');
+                contentCity.css('box-shadow', 'none');
+                /*console.log(selCoun + ' '+ selCity);*/
+                return false;
+            } else {
+                if (selCoun == undefined) {
+                    contentCountry.css('box-shadow', '0 0 5px red');
+                    return false;
+                } else {
+                    contentCountry.css('box-shadow', 'none');
+
+                }
+                if (selCity == undefined) {
+                    contentCity.css('box-shadow', '0 0 5px red');
+                    return false;
+                } else {
+                    contentCity.css('box-shadow', 'none');
+
+                }
+            }
+
             break;
         case 3:
             switchCounter++;
@@ -201,7 +223,6 @@ switchNext.on("click", function () {
         case 4:
             $('.innerwrap').hide();
 
-            
 
             user.name = contentName.val();
             user.email = contentEmail.val();
@@ -293,9 +314,10 @@ var contentCity = $('.content__city');
 for (var i in countries) {
     contentCountry.append('<option class=\"content__option\" value=\"' + i + '\">' + countries[i] + '</option>');
 }
-
+var selCoun, selCity;
 contentCountry.on('change', function () {
     var selectedCountry = contentCountry.val();
+    selCoun = selectedCountry;
     contentCity.html("<option class=\"content__option\" value=\"\" disabled selected>Город</option>");
 
     for (var j in cities) {
@@ -304,6 +326,11 @@ contentCountry.on('change', function () {
         }
     }
 
+});
+
+contentCity.on('change', function () {
+    var selectedCity = contentCity.val();
+    selCity = selectedCity;
 });
 
 
