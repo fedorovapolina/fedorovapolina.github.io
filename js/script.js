@@ -187,6 +187,7 @@ switchNext.on("click", function () {
             switchCounter++;
             case3();
             button2.css('color', '#ff9800');
+            /*console.log($('.content__select'));*/
             return false;
             break;
         case 3:
@@ -197,6 +198,9 @@ switchNext.on("click", function () {
             break;
         case 4:
             $('.innerwrap').hide();
+
+            
+
             user.name = contentName.val();
             user.email = contentEmail.val();
             try {
@@ -308,19 +312,20 @@ var socialCheck = $('.content__socialcheck');
 socialCheck.on('change', function (e) {
     console.log();
     $(e.target).parent().siblings().toggle();
-    console.log($(e.target).parent().text());
+    /*console.log($(e.target).parent().text());*/
 });
 
 
 /*------STEP4------*/
 
-var dog = $('.content__image-dog');
+/*var dog = $('.content__image-dog');*/
 var contentDog = $('.content__dog');
 
 var src = '';
 var contentImages = $('.content__images');
 contentImages.on('click', function (e) {
     var selectedImage = $(e.target);
+
     contentImages.css('border', 'none');
     selectedImage.css('border', '3px solid #ff9800');
 
