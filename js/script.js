@@ -67,6 +67,7 @@ var template = function () {
     content3.hide();
     content4.hide();
     final.hide();
+    $('.wrapper').removeClass('hide');
     /*console.log(window.innerHeight);*/
 
 };
