@@ -46,8 +46,8 @@ var user = {
 };
 
 function Social(title, page) {
-    this.title=title;
-    this.page=page;
+    this.title = title;
+    this.page = page;
 }
 /*general*/
 var innerwrap = $(".innerwrap");
@@ -58,10 +58,10 @@ var content4 = $(".content4");
 var final = $('.final');
 
 var template = function () {
-    button1.css('color','black');
-    button2.css('color','#bbbbbb');
-    button3.css('color','#bbbbbb');
-    button4.css('color','#bbbbbb');
+    button1.css('color', 'black');
+    button2.css('color', '#bbbbbb');
+    button3.css('color', '#bbbbbb');
+    button4.css('color', '#bbbbbb');
     content1.show();
     content2.hide();
     content3.hide();
@@ -84,14 +84,14 @@ var switchCounter = 1;
 var headerText = $("p.header__text");
 /*content1.show();*/
 
-var switchPrev=$('.switch__prev');
-var switchNext=$(".switch__next");
+var switchPrev = $('.switch__prev');
+var switchNext = $(".switch__next");
 
 
 var case1 = function () {
     headerText.text("1. Введите имя и e-mail");
     switchNext.css('color', '#ff9800').css('background-color', 'white').text('Следующий');
-    button1.css('color','black');
+    button1.css('color', 'black');
     content1.show();
     content2.hide();
     content3.hide();
@@ -100,7 +100,7 @@ var case1 = function () {
 var case2 = function () {
     headerText.text("2. Выберите страну и город");
     switchNext.css('color', '#ff9800').css('background-color', 'white').text('Следующий');
-    button2.css('color','black');
+    button2.css('color', 'black');
     content1.hide();
     content2.show();
     content3.hide();
@@ -109,7 +109,7 @@ var case2 = function () {
 var case3 = function () {
     headerText.text("3. Отметьте социальные сети");
     switchNext.css('color', '#ff9800').css('background-color', 'white').text('Следующий');
-    button3.css('color','black');
+    button3.css('color', 'black');
     content1.hide();
     content2.hide();
     content3.show();
@@ -118,13 +118,12 @@ var case3 = function () {
 var case4 = function () {
     headerText.text("4. Выберите любимого котика");
     switchNext.css('color', 'white').css('background-color', '#ff9800').text('Завершить');
-    button4.css('color','black');
+    button4.css('color', 'black');
     content1.hide();
     content2.hide();
     content3.hide();
     content4.show();
 };
-
 
 
 switchPrev.on('click', function () {
@@ -135,19 +134,19 @@ switchPrev.on('click', function () {
         case 2:
             switchCounter--;
             case1();
-            button2.css('color','#ff9800');
+            button2.css('color', '#ff9800');
             return false;
             break;
         case 3:
             switchCounter--;
             case2();
-            button3.css('color','#ff9800');
+            button3.css('color', '#ff9800');
             return false;
             break;
         case 4:
             switchCounter--;
             case3();
-            button4.css('color','#ff9800');
+            button4.css('color', '#ff9800');
             return false;
     }
 });
@@ -155,21 +154,45 @@ switchPrev.on('click', function () {
 switchNext.on("click", function () {
     switch (switchCounter) {
         case 1:
-            switchCounter++;
-            case2();
-            button1.css('color','#ff9800');
-            return false;
-            break;
+            try {
+                if (nameTemp.test(contentName.val()) && emailTemp.test(contentEmail.val())) {
+                    switchCounter++;
+                    $('.content__name').css('box-shadow', 'none');
+                    $('.content__email').css('box-shadow', 'none');
+                    case2();
+                    button1.css('color', '#ff9800');
+                    return false;
+                    /*break;*/
+                } else {
+                    if (nameTemp.test(contentName.val()) == false) {
+                        $('.content__name').css('box-shadow', '0 0 5px red');
+                        return false;
+                        /* break;*/
+                    } else{
+                        $('.content__name').css('box-shadow', 'none');
+                    }
+                    if (emailTemp.test(contentEmail.val()) == false) {
+                        $('.content__email').css('box-shadow', '0 0 5px red');
+                        return false;
+                        /*break;*/
+                    } else {
+                        $('.content__email').css('box-shadow', 'none');
+                    }
+                }
+
+            } catch (a) {
+                console.log(a);
+            } break;
         case 2:
             switchCounter++;
             case3();
-            button2.css('color','#ff9800');
+            button2.css('color', '#ff9800');
             return false;
             break;
         case 3:
             switchCounter++;
             case4();
-            button3.css('color','#ff9800');
+            button3.css('color', '#ff9800');
             return false;
             break;
         case 4:
@@ -182,12 +205,12 @@ switchNext.on("click", function () {
             } catch (e) {
             }
 
-            var par=$('.content__socialcheck:checked').parent();
+            var par = $('.content__socialcheck:checked').parent();
 
-            for (i=0; i<par.length; i++){
-                user.social[i]= new Social($(par[i]).text(),$(par[i]).siblings('input').val());
-                $('.final__social').append('<p class="final__social-item"><span class="final__social-title">'+user.social[i].title
-                    +': </span>' + user.social[i].page +'</p>');
+            for (i = 0; i < par.length; i++) {
+                user.social[i] = new Social($(par[i]).text(), $(par[i]).siblings('input').val());
+                $('.final__social').append('<p class="final__social-item"><span class="final__social-title">' + user.social[i].title
+                    + ': </span>' + user.social[i].page + '</p>');
             }
 
             $('.final__name').text(user.name);
@@ -195,7 +218,7 @@ switchNext.on("click", function () {
             $('.final__location').text(user.country + ', ' + user.city);
 
 
-            $('.final__image').attr('src',src);
+            $('.final__image').attr('src', src);
 
 
             final.show();
@@ -205,37 +228,37 @@ switchNext.on("click", function () {
 
 /*1-4 buttons*/
 
-var button1=$('.header__button1'),
-    button2=$('.header__button2'),
-    button3=$('.header__button3'),
-    button4=$('.header__button4');
+var button1 = $('.header__button1'),
+    button2 = $('.header__button2'),
+    button3 = $('.header__button3'),
+    button4 = $('.header__button4');
 
 button1.on('click', function () {
-    button1.css('color','black');
-    switchCounter=1;
+    button1.css('color', 'black');
+    switchCounter = 1;
     case1();
     return false;
 });
 
 button2.on('click', function () {
-    button2.css('color','black');
-    switchCounter=2;
+    button2.css('color', 'black');
+    switchCounter = 2;
     case2();
 
     return false;
 });
 
 button3.on('click', function () {
-    button3.css('color','black');
-    switchCounter=3;
+    button3.css('color', 'black');
+    switchCounter = 3;
     case3();
 
     return false;
 });
 
 button4.on('click', function () {
-    button4.css('color','black');
-    switchCounter=4;
+    button4.css('color', 'black');
+    switchCounter = 4;
     case4();
 
     return false;
@@ -245,15 +268,14 @@ button4.on('click', function () {
 /*------STEP1--------*/
 
 
-
 var nameTemp = /.+/;
 var emailTemp = /.+@.+\..+/;
 var contentName = $('.content__name');
 var contentEmail = $('.content__email');
-/*if ( nameTemp.test(contentName.val()) && emailTemp.test(contentEmail.val()) == false ){
-    switchNext.off();
+/*if (  == false ){
+ switchNext.off();
 
-}*/
+ }*/
 
 
 
@@ -295,19 +317,19 @@ socialCheck.on('change', function (e) {
 var dog = $('.content__image-dog');
 var contentDog = $('.content__dog');
 
-var src='';
+var src = '';
 var contentImages = $('.content__images');
 contentImages.on('click', function (e) {
     var selectedImage = $(e.target);
     contentImages.css('border', 'none');
-    selectedImage.css('border','3px solid #ff9800');
+    selectedImage.css('border', '3px solid #ff9800');
 
-    if (selectedImage.filter('.content__image-dog').length == 1){
+    if (selectedImage.filter('.content__image-dog').length == 1) {
         contentDog.text('Вы выбрали собачку. А надо котика.');
     } else {
         contentDog.text('');
         /*user.image*/
-        src=selectedImage.attr('src');
+        src = selectedImage.attr('src');
 
     }
     /**/
@@ -315,13 +337,13 @@ contentImages.on('click', function (e) {
 
 /*-------FINAL------*/
 
-var finalReset=$('.final__reset');
+var finalReset = $('.final__reset');
 finalReset.on('click', function () {
-    switchCounter=1;
+    switchCounter = 1;
     template();
     $('.innerwrap').css('display', 'flex');
     $('.content__socialtext').hide();
-    $('.content__images').css('border','none');
+    $('.content__images').css('border', 'none');
     switchNext.css('color', '#ff9800').css('background-color', 'white').text('Следующий');
     headerText.text('1. Введите имя и e-mail');
 });
