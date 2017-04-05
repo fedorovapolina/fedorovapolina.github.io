@@ -36,19 +36,30 @@ var countries = {
 
 /*Initiation*/
 
-var user = {
-    "name": "",
-    "email": "",
-    "country": "",
-    "city": "",
-    "social": [],
-    "image": ""
-};
+/*var user = {
+ "name": "",
+ "email": "",
+ "country": "",
+ "city": "",
+ "social": [],
+ "image": ""
+ };*/
+
+function User(name, email, country, city, social, image) {
+    this.name = name;
+    this.email = email;
+    this.country = country;
+    this.city = city;
+    this.social = social;
+    this.image = image;
+}
 
 function Social(title, page) {
     this.title = title;
     this.page = page;
 }
+
+var user = new User('', '', '', '', [], '');
 /*general*/
 var innerwrap = $(".innerwrap");
 var content1 = $(".content1");
@@ -68,6 +79,9 @@ var template = function () {
     content4.hide();
     final.hide();
     $('.wrapper').css('opacity', '1');
+    button2.off();
+    button3.off();
+    button4.off();
     /*$('.loading').hide();*/
     /*console.log(window.innerHeight);*/
 
@@ -162,6 +176,7 @@ switchNext.on("click", function () {
                     $('.content__name').css('box-shadow', 'none');
                     $('.content__email').css('box-shadow', 'none');
                     case2();
+                    button2.on('click', button2Click);
                     button1.css('color', '#ff9800');
                     return false;
                     /*break;*/
@@ -194,6 +209,7 @@ switchNext.on("click", function () {
                 button2.css('color', '#ff9800');
                 contentCountry.css('box-shadow', 'none');
                 contentCity.css('box-shadow', 'none');
+                button3.on('click',button3Click);
                 /*console.log(selCoun + ' '+ selCity);*/
                 return false;
             } else {
@@ -218,6 +234,7 @@ switchNext.on("click", function () {
             switchCounter++;
             case4();
             button3.css('color', '#ff9800');
+            button4.on('click', button4Click);
             return false;
             break;
         case 4:
@@ -265,36 +282,42 @@ var button1 = $('.header__button1'),
     button3 = $('.header__button3'),
     button4 = $('.header__button4');
 
-button1.on('click', function () {
+
+var button1Click = function () {
     button1.css('color', 'black');
     switchCounter = 1;
     case1();
     return false;
-});
-
-button2.on('click', function () {
+};
+var button2Click = function () {
     button2.css('color', 'black');
     switchCounter = 2;
     case2();
 
     return false;
-});
-
-button3.on('click', function () {
+};
+var button3Click = function () {
     button3.css('color', 'black');
     switchCounter = 3;
     case3();
 
     return false;
-});
-
-button4.on('click', function () {
+};
+var button4Click = function () {
     button4.css('color', 'black');
     switchCounter = 4;
     case4();
 
     return false;
-});
+};
+
+
+button1.on('click', button1Click);
+/*
+button2.on('click', button2Click);
+button3.on('click', button3Click);
+button4.on('click', button4Click);
+*/
 
 
 /*------STEP1--------*/
@@ -341,13 +364,14 @@ contentCity.on('change', function () {
 
 /*------STEP3-----*/
 
-
+var inputSocialMas = [];
 var socialCheck = $('.content__socialcheck');
 socialCheck.on('change', function (e) {
     var inputSocial = $(e.target).parent().siblings();
     inputSocial.toggle();
     inputSocial.css('box-shadow', 'none');
-    /*console.log($(e.target).parent().text());*/
+    /*inputSocialMas.push(inputSocial);
+     console.log(inputSocialMas);*/
 });
 
 
@@ -382,7 +406,8 @@ var finalReset = $('.final__reset');
 finalReset.on('click', function () {
     switchCounter = 1;
     template();
-    selectedImage=undefined;
+    /*selectedImage=undefined;*/
+    user = new User('', '', '', '', [], '');
     $('.innerwrap').css('display', 'flex');
     $('.content__socialtext').hide();
     $('.content__images').css('border', 'none');
