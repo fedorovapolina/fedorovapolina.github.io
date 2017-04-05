@@ -221,35 +221,40 @@ switchNext.on("click", function () {
             return false;
             break;
         case 4:
-            $('.innerwrap').hide();
+            if (selectedImage && selectedImage.filter('.content__image-dog').length != 1) {
+                $('.innerwrap').hide();
 
 
-            user.name = contentName.val();
-            user.email = contentEmail.val();
-            try {
-                user.country = countries[contentCountry.val()];
-                user.city = cities[$('.content__city').val()].name;
-            } catch (e) {
+                user.name = contentName.val();
+                user.email = contentEmail.val();
+                try {
+                    user.country = countries[contentCountry.val()];
+                    user.city = cities[$('.content__city').val()].name;
+                } catch (e) {
+                }
+
+                var par = $('.content__socialcheck:checked').parent();
+
+                for (i = 0; i < par.length; i++) {
+                    user.social[i] = new Social($(par[i]).text(), $(par[i]).siblings('input').val());
+                    $('.final__social').append('<p class="final__social-item"><span class="final__social-title">' + user.social[i].title
+                        + ': </span>' + user.social[i].page + '</p>');
+                }
+
+
+                $('.final__name').text(user.name);
+                $('.final__email').text(user.email);
+                $('.final__location').text(user.country + ', ' + user.city);
+
+
+                $('.final__image').attr('src', src);
+
+
+                final.show();
+                return false;
+            } else {
+                return false;
             }
-
-            var par = $('.content__socialcheck:checked').parent();
-
-            for (i = 0; i < par.length; i++) {
-                user.social[i] = new Social($(par[i]).text(), $(par[i]).siblings('input').val());
-                $('.final__social').append('<p class="final__social-item"><span class="final__social-title">' + user.social[i].title
-                    + ': </span>' + user.social[i].page + '</p>');
-            }
-
-            $('.final__name').text(user.name);
-            $('.final__email').text(user.email);
-            $('.final__location').text(user.country + ', ' + user.city);
-
-
-            $('.final__image').attr('src', src);
-
-
-            final.show();
-            return false;
     }
 });
 
@@ -325,12 +330,12 @@ contentCountry.on('change', function () {
             contentCity.append('<option class=\"content__option\" value=\"' + j + '\">' + cities[j].name + '</option>');
         }
     }
-
+    contentCountry.css('box-shadow', 'none');
 });
 
 contentCity.on('change', function () {
-    var selectedCity = contentCity.val();
-    selCity = selectedCity;
+    selCity = contentCity.val();
+    contentCity.css('box-shadow', 'none');
 });
 
 
@@ -339,8 +344,9 @@ contentCity.on('change', function () {
 
 var socialCheck = $('.content__socialcheck');
 socialCheck.on('change', function (e) {
-    console.log();
-    $(e.target).parent().siblings().toggle();
+    var inputSocial = $(e.target).parent().siblings();
+    inputSocial.toggle();
+    inputSocial.css('box-shadow', 'none');
     /*console.log($(e.target).parent().text());*/
 });
 
@@ -352,8 +358,9 @@ var contentDog = $('.content__dog');
 
 var src = '';
 var contentImages = $('.content__images');
+var selectedImage;
 contentImages.on('click', function (e) {
-    var selectedImage = $(e.target);
+    selectedImage = $(e.target);
 
     contentImages.css('border', 'none');
     selectedImage.css('border', '3px solid #ff9800');
@@ -375,6 +382,7 @@ var finalReset = $('.final__reset');
 finalReset.on('click', function () {
     switchCounter = 1;
     template();
+    selectedImage=undefined;
     $('.innerwrap').css('display', 'flex');
     $('.content__socialtext').hide();
     $('.content__images').css('border', 'none');
