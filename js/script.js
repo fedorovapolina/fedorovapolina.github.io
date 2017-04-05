@@ -82,16 +82,16 @@ var template = function () {
     button2.off();
     button3.off();
     button4.off();
-    /*$('.loading').hide();*/
+
     /*console.log(window.innerHeight);*/
 
 };
 
 window.onload = template;
 
-if (window.innerHeight < 440 || window.innerWidth < 280) {
+if (window.innerHeight < 440 || window.innerWidth < 600 || screen.height < 440 || screen.width < 600) {
     innerwrap.css("display", "block");
-    $('.wrapper').css('height', 'auto').css('width', 'auto');
+    $('.wrapper').css('height', '100%').css('width', '100%');
 }
 
 /*windows changing*/

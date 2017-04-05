@@ -34,7 +34,9 @@ body,html{
     flex-direction: column;
     justify-content: center;
 }
-
+.content1, .content2 , .content3{
+    width: 276px;
+}
 
 /*for all*/
 
@@ -101,7 +103,9 @@ body,html{
 }
 
 
-
+.content3{
+    margin-bottom: 142px;
+}
 
 .content__social{
     display: flex;
