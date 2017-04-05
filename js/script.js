@@ -379,7 +379,7 @@ socialCheck.on('change', function (e) {
 
 /*var dog = $('.content__image-dog');*/
 var contentDog = $('.content__dog');
-
+contentDog.css('visibility','hidden');
 var src = '';
 var contentImages = $('.content__images');
 var selectedImage;
@@ -390,9 +390,9 @@ contentImages.on('click', function (e) {
     selectedImage.css('border', '3px solid #ff9800');
 
     if (selectedImage.filter('.content__image-dog').length == 1) {
-        contentDog.text('Вы выбрали собачку. А надо котика.');
+        contentDog.css('visibility','visible');
     } else {
-        contentDog.text('');
+        contentDog.css('visibility','hidden');
         /*user.image*/
         src = selectedImage.attr('src');
 
